@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <form class="login-form" method="post" th:action="@{/custom-login}">
+        <p class="login-text">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-lock fa-stack-1x"></i>
+            </span>
+        </p>
+        <input type="text" class="login-username" autofocus="true" required="true" placeholder="Username" name="username"/>
+        <input type="password" class="login-password" required="true" placeholder="Password" name="password"/>
+        <input name="_csrf" type="hidden" value="2d191443-fea5-46b3-a16b-ebb82d74366c" />
+
+        <button class="login-submit" type="submit">Sign in</button>
+    </form>
+    <div class="underlay-photo"></div>
+    <div class="underlay-black"></div> 
+</body>
+</html>

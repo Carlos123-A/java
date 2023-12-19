@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .error-container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #dc3545; /* Color rojo */
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+
+
+        a {
+            color: #007bff; /* Color azul */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+      
+        <h1>Ha ocurrido un error</h1>
+        <p>Lo sentimos, pero no tiene permisos para realizar esta acción.</p>
+        <p><a href="javascript:history.back()">Volver a la vista anterior</a></p>
+    </div>
+</body>
+</html>

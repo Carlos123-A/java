@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:temporals="http://www.thymeleaf.org/extras/temporals" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Citas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a.edit {
+            background-color: #28a745;
+        }
+
+        form.delete {
+            display: inline;
+        }
+
+        button.delete {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button.delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Listado de Citas</h1>
+
+<!-- Botón para agregar una nueva cita -->
+<a th:href="@{/citas/form}">Agregar Cita</a>
+
+<!-- Lista de citas -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Razón</th>
+        <th>Cliente (DNI)</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cita : ${citas}">
+        <td th:text="${cita.id}"></td>
+        <td th:text="${#temporals.format(cita.fecha, 'yyyy-MM-dd HH:mm')}"></td>
+        <td th:text="${cita.razon}"></td>
+        <td th:text="${cita.cliente.dni}"></td>
+        <td>
+            <!-- Enlace para editar la cita -->
+            <a th:href="@{/citas/editar/{id}(id=${cita.id})}" class="edit">Editar</a>
+
+            <!-- Formulario para eliminar la cita -->
+            <form th:action="@{/citas/eliminar/{id}(id=${cita.id})}" method="post" class="delete">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <button type="submit" class="delete" onclick="return confirm('¿Estás seguro de que quieres eliminar esta cita?')">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        a {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a.edit {
+            background-color: #28a745;
+        }
+
+        form.delete {
+            display: inline;
+        }
+
+        button.delete {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button.delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Listado de Clientes</h1>
+
+<!-- Botón para agregar un nuevo cliente -->
+<a th:href="@{/clientes/form}">Agregar Cliente</a>
+
+<!-- Lista de clientes -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Dirección</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.id}"></td>
+        <td th:text="${cliente.dni}"></td>
+        <td th:text="${cliente.nombre}"></td>
+        <td th:text="${cliente.email}"></td>
+        <td th:text="${cliente.direccion}"></td>
+        <td>
+            <!-- Enlace para editar el cliente -->
+            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}" class="edit">Editar</a>
+
+            <!-- Formulario para eliminar el cliente -->
+            <form th:action="@{/clientes/eliminar/{id}(id=${cliente.id})}" method="post" class="delete">
+                <input type="hidden" name="_method" value="POST"/>
+                <!-- Agregar token CSRF -->
+                <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este cliente?')">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

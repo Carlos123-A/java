@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Veterinaria</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Agregar estilos personalizados -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 56px; /* Ajustar según el tamaño del navbar */
+            color: #fff;
+        }
+
+        #sidebar h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #sidebar .list-unstyled {
+            padding: 10px;
+        }
+
+        #sidebar a {
+            color: #fff;
+        }
+
+        #content {
+            margin-left: 250px; /* Ancho del sidebar */
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .info-panel {
+            flex: 0 0 calc(33.3333% - 20px); /* Tamaño de cada panel con margen */
+            margin: 10px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #logo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Logo -->
+<div id="logo">
+    <img src="logo.png" width="50">
+</div>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>Veterinaria</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a href="#citas">Citas</a>
+            <ul class="list-unstyled">
+                <li><a href="/citas/form">Agregar Cita</a></li>
+                <li><a href="/citas/list">Listar Citas</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#clientes">Clientes</a>
+            <ul class="list-unstyled">
+                <li><a href="/clientes/form">Agregar Cliente</a></li>
+                <li><a href="/clientes/list">Listar Clientes</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#mascotas">Mascotas</a>
+            <ul class="list-unstyled">
+                <li><a href="/mascotas/form">Agregar Mascota</a></li>
+                <li><a href="/mascotas/list">Listar Mascotas</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<!-- Contenido principal -->
+<div id="content">
+    <!-- Servicios en paneles de información -->
+    <div class="info-panel">
+        <img src="servicios.jpeg" alt="Servicio 1" class="img-fluid">
+        <h4>Consulta Veterinaria</h4>
+        <p>Ofrecemos consultas veterinarias especializadas para garantizar la salud y el bienestar de tu mascota.</p>
+    </div>
+    <div class="info-panel">
+        <img src="peluqueria.jpeg" alt="Servicio 2" class="img-fluid">
+        <h4>Estética Canina</h4>
+        <p>Nuestro servicio de estética canina incluye baño, corte de pelo y cuidado de uñas para mantener a tu mascota limpia y feliz.</p>
+    </div>
+    <div class="info-panel">
+        <img src="vacunacion.jpeg" alt="Servicio 3" class="img-fluid">
+        <h4>Programa de Vacunación</h4>
+        <p>Contamos con un programa de vacunación completo para proteger a tu mascota contra enfermedades comunes y prevenibles.</p>
+    </div>
+    <!-- Agrega más paneles según sea necesario -->
+</div>
+
+<!-- Scripts de Bootstrap y otros si es necesario -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- Otros scripts que puedas necesitar -->
+
+</body>
+</html>
